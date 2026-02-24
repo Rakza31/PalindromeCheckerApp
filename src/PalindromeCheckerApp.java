@@ -1,35 +1,17 @@
-import java.util.Stack;
-
-public class PalindromeCheckerApp {
-
-    public static void main(String[] args) {
-
-        // Original string
-        String input = "madam";
-
-        // Create stack
-        Stack<Character> stack = new Stack<>();
-
-        // Push characters into stack
-        for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+public class UseCase9PalindromeCheckerApp{
+    private static boolean check(String s, int start, int end){
+        if(start>=end){
+            return true;
         }
-
-        boolean isPalindrome = true;
-
-        // Pop characters and compare
-        for (int i = 0; i < input.length(); i++) {
-
-            char poppedChar = stack.pop();
-
-            if (input.charAt(i) != poppedChar) {
-                isPalindrome = false;
-                break;
-            }
+        if(s.charAt(start)!=s.charAt(end)){
+            return false;
         }
-
-        // Display result
-        System.out.println("Input text : " + input);
-        System.out.println("Is it a Palindrome? : " + isPalindrome);
+        return check(s, start+1, end-1);
+    }
+    public static void main(String[] args){
+        String word="madam";
+        boolean result=check(word, 0, word.length()-1);
+        System.out.println("Input text: "+word);
+        System.out.println("Is it a palindrome?: "+result);
     }
 }
