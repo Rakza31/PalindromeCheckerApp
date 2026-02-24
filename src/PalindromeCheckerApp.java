@@ -1,35 +1,15 @@
-import java.util.Stack;
-
-public class PalindromeCheckerApp {
-
-    public static void main(String[] args) {
-
-        // Original string
-        String input = "madam";
-
-        // Create stack
-        Stack<Character> stack = new Stack<>();
-
-        // Push characters into stack
-        for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
-        }
-
-        boolean isPalindrome = true;
-
-        // Pop characters and compare
-        for (int i = 0; i < input.length(); i++) {
-
-            char poppedChar = stack.pop();
-
-            if (input.charAt(i) != poppedChar) {
-                isPalindrome = false;
+public class UseCase10PalindromeCheckerApp{
+    public static void main(String[] args){
+        String word="A man a plan a canal Panama";
+        String normalized=word.replaceAll("\\s+", "").toLowerCase();
+        boolean palindrome=true;
+        for(int i=0;i<=normalized.length()/2;i++){
+            if(normalized.charAt(i)!=normalized.charAt(normalized.length()-1-i)){
+                palindrome=false;
                 break;
             }
         }
-
-        // Display result
-        System.out.println("Input text : " + input);
-        System.out.println("Is it a Palindrome? : " + isPalindrome);
+        System.out.println("Input text: "+word);
+        System.out.println("Is it a palindrome?: "+palindrome);
     }
 }
