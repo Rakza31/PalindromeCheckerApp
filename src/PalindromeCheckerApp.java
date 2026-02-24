@@ -1,35 +1,18 @@
-import java.util.Stack;
-
-public class PalindromeCheckerApp {
-
-    public static void main(String[] args) {
-
-        // Original string
-        String input = "madam";
-
-        // Create stack
-        Stack<Character> stack = new Stack<>();
-
-        // Push characters into stack
-        for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+public class UseCase7PalindromeCheckerApp{
+    public static void main(String[] args){
+        String word="refer";
+        Deque<Character> deque=new ArrayDeque<>();
+        for(char c:word.toCharArray()){
+            deque.add(c);
         }
-
-        boolean isPalindrome = true;
-
-        // Pop characters and compare
-        for (int i = 0; i < input.length(); i++) {
-
-            char poppedChar = stack.pop();
-
-            if (input.charAt(i) != poppedChar) {
-                isPalindrome = false;
+        boolean palindrome=true;
+        while(deque.size()>1){
+            if (deque.removeFirst()!=deque.removeLast()) {
+                palindrome=false;
                 break;
             }
         }
-
-        // Display result
-        System.out.println("Input text : " + input);
-        System.out.println("Is it a Palindrome? : " + isPalindrome);
+        System.out.println("Input text: "+word);
+        System.out.println("Is it a palindrome?: "+palindrome);
     }
 }
